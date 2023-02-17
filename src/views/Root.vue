@@ -14,7 +14,7 @@
                     </div>
                 </el-scrollbar>
             </div>
-            <div class="h-20">
+            <div class="h-20 text-[red]">
                 <Footer />
             </div>
         </div>
@@ -24,8 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import Menu from '@/components/layout/menu/Menu.vue';
-import Header from '@/components/layout/header/Header.vue';
+import Menu from '@/components/layout/menu/Index.vue';
+import Header from '@/components/layout/header/Index.vue';
 import Footer from '@/components/layout/footer/Footer.vue';
 import PlayList from '@/components/layout/playList/PlayList.vue';
 </script>

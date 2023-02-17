@@ -1,7 +1,11 @@
 const route = {
     path: '/discover',
-    name: '发现页',
+    name: 'discover',
     component: () => import('@/views/discover/Discover.vue'),
+    meta: {
+        menu: 'discover',
+        keepAlive: true,
+    },
     children: []
 };
 

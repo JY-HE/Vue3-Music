@@ -40,4 +40,7 @@ export default defineConfig({
   build: {
     outDir: 'dist', //指定输出路径
   },
+  server: {
+    port: 9999,
+  }
 });
