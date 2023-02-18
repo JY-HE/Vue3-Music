@@ -42,5 +42,15 @@ export default defineConfig({
   },
   server: {
     port: 9999,
-  }
+    // 设置 http 代理 跨域
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:3000', //需要访问的地址
+        // target: 'https://netease-cloud-music-4xmo6vdfe-jy-he.vercel.app',
+        changeOrigin: true,   //是否跨域
+        secure: false,        //是否https接口
+        rewrite: path => path.replace(/^\/api/, ''),   // 路径重写
+      },
+    }
+  },
 });

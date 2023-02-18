@@ -18,8 +18,8 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { useMenu } from '@/hooks/useMenu';
-import { IMenu } from '@/models/menu';
+import { useMenu } from '@/hooks';
+import type { IMenu } from '@/models/menu';
 
 const router = useRouter();
 const { menus, setCurrentKey, currentKey } = useMenu();

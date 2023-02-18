@@ -16,9 +16,13 @@ declare module '@vue/runtime-core' {
     MenuList: typeof import('./components/layout/menu/MenuList.vue')['default']
     Operation: typeof import('./components/layout/header/Operation.vue')['default']
     PlayList: typeof import('./components/layout/playList/PlayList.vue')['default']
+    QrPopup: typeof import('./components/layout/header/QrPopup.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Search: typeof import('./components/layout/header/Search.vue')['default']
     SearchSuggestPopup: typeof import('./components/layout/header/SearchSuggestPopup.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }
