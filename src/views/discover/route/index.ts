@@ -1,7 +1,7 @@
 const route = {
-    path: '/discover',
+    path: 'discover',
     name: 'discover',
-    component: () => import('@/views/discover/Discover.vue'),
+    component: () => import('@/views/discover/Index.vue'),
     meta: {
         menu: 'discover',
         keepAlive: true,

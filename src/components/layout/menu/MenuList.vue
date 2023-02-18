@@ -33,10 +33,10 @@ watch(
     { immediate: true }
 );
 
-const changeMenu = (menu: IMenu) => {
+const changeMenu = async (menu: IMenu) => {
     console.log('Rd ~ file: MenuList.vue:38 ~ changeMenu ~ menu', menu);
     setCurrentKey(menu.key);
-    // await router.push({ name: menu.key, replace: true, params: {} });
+    await router.push({ name: menu.key || '/', replace: true, params: {} });
 };
 </script>
 
