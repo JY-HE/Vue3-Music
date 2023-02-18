@@ -2,8 +2,8 @@
     <div class="operation flex items-center">
         <div class="head_picture w-9 h-9 mr-4"></div>
         <div class="mr-4">点击登录</div>
-        <iconMoon theme="outline" size="24" fill="#333" class="mr-4" />
-        <iconHamburgerButton theme="outline" size="24" fill="#333" class="mr-4" />
+        <iconMoon theme="outline" size="24" fill="#333" class="mr-4" title="黑夜模式" />
+        <iconHamburgerButton theme="outline" size="24" fill="#333" class="mr-4" title="主菜单" />
     </div>
 </template>
 
@@ -21,6 +21,12 @@ import { Moon as iconMoon, HamburgerButton as iconHamburgerButton } from '@icon-
     .head_picture {
         background-color: #ccc;
         border-radius: 100%;
+    }
+
+    .i-icon-hamburger-button {
+        &:hover {
+            color: aquamarine;
+        }
     }
 }
 </style>

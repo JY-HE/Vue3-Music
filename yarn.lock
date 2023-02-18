@@ -334,7 +334,7 @@
 
 "@icon-park/vue-next@^1.4.2":
   version "1.4.2"
-  resolved "http://registry.npm.rdapp.com/@icon-park%2fvue-next/-/vue-next-1.4.2.tgz#818c048100401620e8112beb2636f10171b195cc"
+  resolved "https://registry.npmmirror.com/@icon-park/vue-next/-/vue-next-1.4.2.tgz#818c048100401620e8112beb2636f10171b195cc"
   integrity sha512-+QklF255wkfBOabY+xw6FAI0Bwln/RhdwCunNy/9sKdKuChtaU67QZqU67KGAvZUTeeBgsL+yaHHxqfQeGZXEQ==
 
 "@jridgewell/gen-mapping@^0.1.0":

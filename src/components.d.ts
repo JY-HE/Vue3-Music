@@ -11,15 +11,14 @@ declare module '@vue/runtime-core' {
     ElInput: typeof import('element-plus/es')['ElInput']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     Footer: typeof import('./components/layout/footer/Footer.vue')['default']
-    Header: typeof import('./components/layout/header/Index.vue')['default']
     IconPark: typeof import('./components/common/IconPark.vue')['default']
     Index: typeof import('./components/layout/header/Index.vue')['default']
-    Menu: typeof import('./components/layout/menu/Index.vue')['default']
     MenuList: typeof import('./components/layout/menu/MenuList.vue')['default']
     Operation: typeof import('./components/layout/header/Operation.vue')['default']
     PlayList: typeof import('./components/layout/playList/PlayList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Search: typeof import('./components/layout/header/Search.vue')['default']
+    SearchSuggestPopup: typeof import('./components/layout/header/SearchSuggestPopup.vue')['default']
   }
 }

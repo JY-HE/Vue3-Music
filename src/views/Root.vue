@@ -1,9 +1,9 @@
 <template>
     <div class="w-screen h-screen flex items-stretch overflow-hidden">
-        <div class="w-56 h-screen flex-shrink-0">
+        <div class="w-56 h-screen flex-shrink-0 bg-[#f5f5f5]">
             <Menu />
         </div>
-        <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col bg-[#f7f8fa]">
             <div class="h-14">
                 <Header />
             </div>

@@ -4,18 +4,16 @@
         <el-input
             v-model="search"
             placeholder="搜索音乐"
-            @focus="searchFocus"
-            @blur="searchBlur"
+            @focus="emits('handleSearchSuggestPopup', true)"
+            @blur="emits('handleSearchSuggestPopup', false)"
         ></el-input>
     </div>
 </template>
 
 <script setup lang="ts">
 import { Search as iconSearch } from '@icon-park/vue-next';
-import { useSearch } from '@/hooks/useSearch';
-
+const emits = defineEmits(['handleSearchSuggestPopup']);
 const search = ref('');
-const { searchFocus, searchBlur } = useSearch();
 </script>
 
 <style lang="scss">
