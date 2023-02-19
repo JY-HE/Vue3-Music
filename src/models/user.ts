@@ -1,4 +1,4 @@
-export interface UserProfile {
+export interface IUserProfile {
     userId: number;
     userType: number;
     nickname: string;
@@ -36,4 +36,19 @@ export interface UserProfile {
     authenticationTypes: number;
     avatarDetail?: any;
     anchor: boolean;
+}
+
+export interface IUserAccount {
+    id: number;
+    userName: string;
+    type: number;
+    status: number;
+    whitelistAuthority: number;
+    createTime: number;
+    tokenVersion: number;
+    ban: number;
+    baoyueVersion: number;
+    donateVersion: number;
+    vipType: number;
+    anonimousUser: boolean;
 }

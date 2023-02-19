@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia';
-import { useQrCheck, useLoginStatus } from '@/hooks';
-import type { UserProfile } from '@/models/user';
+import type { IUserProfile } from '@/models/user';
 
 export const useUserStore = defineStore('user', {
     state: () => {
@@ -8,7 +7,7 @@ export const useUserStore = defineStore('user', {
             token: '',
             cookie: '',
             showLoginPopup: false,
-            profile: {} as UserProfile,
+            profile: {} as IUserProfile,
         };
     },
     getters: {
@@ -19,48 +18,33 @@ export const useUserStore = defineStore('user', {
     },
     actions: {
         /**
-         * @description: 获取二维码检测扫码状态方法
-         * @param {string} key
-         * @return {*}
+         * @description: 设置cookie
+         * @param {string} cookie
          */
-        async login(key: string) {
-            const res = await useQrCheck(key);
-            if (res.code == 803) {
-                this.cookie = res.cookie;
-                localStorage.setItem('USER-COOKIE', this.cookie);
-                this.checkLogin();
-            } else {
-                console.log("Rd ~ QrStatus", res.message)
-            }
+        setCookie(cookie: string) {
+            this.cookie = cookie;
         },
         /**
-         * @description: 获取用户登录状态方法
-         * @return {*}
+         * @description: 设置profile
+         * @param {IUserProfile} profile
          */
-        async checkLogin() {
-            const data = await useLoginStatus();
-            if (data.code === 200) {
-                this.profile = data.profile;
-                this.setShowLogin(false)
-            } else {
-                console.error("用户未登录", data)
-            }
+        setProfile(profile: IUserProfile) {
+            this.profile = profile;
         },
         /**
-         * @description: 控制登录弹框显隐
+         * @description: 设置控制登录弹框显隐
          * @param {boolean} status
-         * @return {*}
          */
         setShowLogin(status: boolean) {
             this.showLoginPopup = status;
         },
         /**
-         * @description: 设置cookie
-         * @param {string} cookie
-         * @return {*}
+         * @description: 未登录清空数据
          */
-        setCookie(cookie: string) {
-            this.cookie = cookie;
-        }
+        setClearData() {
+            this.cookie = '';
+            this.profile = {} as IUserProfile;
+            localStorage.removeItem('USER-COOKIE');
+        },
     },
 });

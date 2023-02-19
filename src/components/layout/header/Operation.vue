@@ -5,7 +5,14 @@
         </div>
         <div class="mr-4" @click="handleLogin" v-if="!isLogin">点击登录</div>
         <div class="mr-4" v-else>{{ profile.nickname }}</div>
-        <iconMoon theme="outline" size="24" fill="#333" class="mr-4" title="黑夜模式" />
+        <iconMoon
+            theme="outline"
+            size="24"
+            fill="#333"
+            class="mr-4"
+            title="黑夜模式"
+            @click="getLogout"
+        />
         <iconHamburgerButton theme="outline" size="24" fill="#333" class="mr-4" title="主菜单" />
 
         <QrPopup :unikey="state.qrkey" :qrimg="state.qrimg" v-if="showLoginPopup"></QrPopup>
@@ -14,11 +21,11 @@
 
 <script setup lang="ts">
 import { Moon as iconMoon, HamburgerButton as iconHamburgerButton } from '@icon-park/vue-next';
+import { getQrKey, getQrCreate, getLoginStatus, getLogout } from '@/hooks';
 import { useUserStore } from '@/stores/user';
-import { useQrKey, useQrCreate } from '@/hooks';
 import { storeToRefs } from 'pinia';
 
-const { setShowLogin, setCookie, checkLogin } = useUserStore();
+const { setCookie, setProfile, setShowLogin, setClearData } = useUserStore();
 const { isLogin, profile, showLoginPopup } = storeToRefs(useUserStore());
 
 const state = reactive({
@@ -27,22 +34,38 @@ const state = reactive({
 });
 
 onMounted(() => {
-    const cookie = window.localStorage.getItem('USER-COOKIE') || '';
-    if (cookie) {
-        setCookie(cookie);
-        checkLogin();
-    }
+    initLoginStatus();
 });
 
+/**
+ * @description: 初始化用户登录状态
+ */
+const initLoginStatus = async () => {
+    const { code, profile } = await getLoginStatus();
+    if (code === 200 && profile) {
+        console.debug('登录成功');
+        setCookie(localStorage.getItem('USER-COOKIE') || '');
+        setProfile(profile);
+        setShowLogin(false);
+    } else {
+        setClearData();
+        console.error('用户未登录');
+    }
+};
+
+/**
+ * @description: 点击立即登录
+ * @return {*}
+ */
 const handleLogin = async () => {
     setShowLogin(true);
-    const { code, unikey } = await useQrKey();
+    const { code, unikey } = await getQrKey();
     if (code !== 200) {
         console.error('Rd ~ getUnikey ~ error', code);
         return;
     }
     state.qrkey = unikey;
-    const qrData = await useQrCreate(unikey);
+    const qrData = await getQrCreate(unikey);
     if (qrData.code !== 200) {
         console.error('Rd ~ getQrData ~ error', qrData.code);
         return;

@@ -8,6 +8,7 @@
 </template>
 
 <script setup lang="ts">
+import { getQrCheck, getLoginStatus } from '@/hooks';
 import { useUserStore } from '@/stores/user';
 
 const props = defineProps({
@@ -15,14 +16,21 @@ const props = defineProps({
     qrimg: { type: String, default: '' },
 });
 
-let timer: number = 0;
+const { setCookie } = useUserStore();
 
-const { login } = useUserStore();
+let timer: number = 0;
 
 onMounted(() => {
     timer = window.setInterval(async () => {
-        await login(props.unikey);
-    }, 3000);
+        const res = await getQrCheck(props.unikey);
+        if (res.code == 803) {
+            setCookie(res.cookie);
+            localStorage.setItem('USER-COOKIE', res.cookie);
+            getLoginStatus();
+        } else {
+            console.log('Rd ~ QrStatus', res.message);
+        }
+    }, 1000);
 });
 
 onUnmounted(() => {
