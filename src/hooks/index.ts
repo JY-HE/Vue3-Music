@@ -9,4 +9,3 @@
  */
 
 export * from './useUser'
-export * from './useMenu'
