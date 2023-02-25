@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { getQrCheck, getLoginStatus } from '@/hooks';
+import { getQrCheck, getLoginStatus } from '@/service';
 import { useUserStore } from '@/stores/user';
 
 const props = defineProps({

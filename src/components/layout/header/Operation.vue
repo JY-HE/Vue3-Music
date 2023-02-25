@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { Moon as iconMoon, HamburgerButton as iconHamburgerButton } from '@icon-park/vue-next';
-import { getQrKey, getQrCreate, getLoginStatus, getLogout } from '@/hooks';
+import { getQrKey, getQrCreate, getLoginStatus, getLogout } from '@/service';
 import { useUserStore } from '@/stores/user';
 import { storeToRefs } from 'pinia';
 
