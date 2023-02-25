@@ -18,6 +18,11 @@
 </template>
 
 <script setup lang="ts">
+import AdvanceOrRetreat from "./components/AdvanceOrRetreat.vue";
+import Search from "./components/Search.vue";
+import SearchSuggestPopup from "./components/SearchSuggestPopup.vue";
+import Operation from "./components/Operation.vue";
+
 const isShowSearchPopup = ref<boolean>(false);
 </script>
 

@@ -1,4 +1,5 @@
 <template>
+    <div class="w-full h-full p-4">
     <el-scrollbar>
         <div v-for="menu in menus" :key="menu.name" class="mb-6">
             <div class="h-9 flex items-center">{{ menu.name }}</div>
@@ -14,6 +15,7 @@
             </div>
         </div>
     </el-scrollbar>
+    </div>
 </template>
 
 <script setup lang="ts">

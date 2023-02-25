@@ -1,7 +1,7 @@
 <template>
     <div class="w-screen h-screen flex items-stretch overflow-hidden">
         <div class="w-56 h-screen flex-shrink-0 bg-[#f5f5f5]">
-            <Menu />
+            <MenuList />
         </div>
         <div class="flex-1 flex flex-col bg-[#f7f8fa]">
             <div class="h-14">
@@ -24,9 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import Menu from '@/components/layout/menu/Index.vue';
-import Header from '@/components/layout/header/Index.vue';
-import Footer from '@/components/layout/footer/Footer.vue';
-import PlayList from '@/components/layout/playList/PlayList.vue';
+import MenuList from '@/views/layout/menu/MenuList.vue';
+import Header from '@/views/layout/header/Header.vue';
+import Footer from '@/views/layout/footer/Footer.vue';
+import PlayList from '@/views/layout/playList/PlayList.vue';
 </script>
-<style lang="scss"></style>
