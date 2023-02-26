@@ -2,15 +2,15 @@
     <div class="w-full h-full p-4">
     <el-scrollbar>
         <div v-for="menu in menus" :key="menu.name" class="mb-6">
-            <div class="h-9 flex items-center">{{ menu.name }}</div>
+            <div class="h-9 flex items-center text-gray-500">{{ menu.name }}</div>
             <div
                 v-for="(item, index) in menu.menus"
                 :key="item.name"
-                class="h-9 text-[1.125rem] flex items-center pl-4 menu"
+                class="h-9 flex items-center pl-4 text-style-menu-2 menu"
                 :class="item.key === state.currentKey ? 'active' : ''"
                 @click="changeMenu(item)"
             >
-                <JyIconfont :icon='item.icon'></JyIconfont>
+                <JyIconfont :icon='item.icon'/>
                 <span class="ml-4">{{ item.name }}</span>
             </div>
         </div>
@@ -112,11 +112,10 @@ const changeMenu = async (menu: IMenu) => {
     cursor: pointer;
     border-radius: 4px;
     &:hover {
-        background-image: linear-gradient(to right, rgb(222, 222, 222), rgb(236, 234, 234));
+        background-image: linear-gradient(to right, rgba(222, 222, 222,var(--opacity)), rgba(236, 234, 234,var(--opacity)));
     }
     &.active {
         background-image: linear-gradient(to right, rgb(31, 212, 174), rgb(30, 205, 151));
-        color: #fff;
     }
     .JyIconfont{
         font-size: 24px;

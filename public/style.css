@@ -11,6 +11,7 @@ body,
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: color, background 0.5s ease;
 }
 
 /* 字体图标 */
@@ -22,8 +23,45 @@ body,
 /* 默认字体图标样式 */
 .iconfont {
     font-family: 'iconfont' !important;
-    font-size: 1rem;
+    font-size: 16px;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* 正常展示的样式 */
+:root {
+    /* 按钮颜色以及单选多选等主体色 */
+    --theme-color: #416eff;
+    /* 文字颜色 */
+    --theme-text-color: 0, 0, 0;
+    /* 主题背景颜色 */
+    --theme-bg: 255, 255, 255;
+    /* 大部分icon颜色 */
+    --theme-icon: inherit;
+    /* sidebar三角箭头icon */
+    --theme-arrow-icon: 58, 58, 68;
+    /* 下拉和 select 三角箭头icon */
+    --theme-input-arrow-icon: 58, 58, 68;
+    /* input的背景色 */
+    --theme-input-bg: 255, 255, 255;
+    /* 菜单区背景色 */
+    --theme-menu-bg: 245, 245, 245;
+    /* 主体内容区背景色 */
+    --theme-main-bg: 247, 248, 250;
+    /* 透明度 */
+    --opacity: 0.5;
+}
+/* 黑夜模式下展示的样式 */
+html[theme-mode='dark'] {
+    --theme-color: #416eff;
+    --theme-text-color: 255, 255, 255;
+    --theme-bg: 39, 39, 39;
+    --theme-icon: 255, 255, 255;
+    --theme-arrow-icon: 255, 255, 255;
+    --theme-input-arrow-icon: 255, 255, 255;
+    --theme-input-bg: none;
+    --theme-menu-bg: 18, 18, 18;
+    --theme-main-bg: 39, 39, 39;
+    --opacity: 0.5;
 }

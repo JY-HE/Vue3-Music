@@ -1,12 +1,16 @@
 <template>
-    <div class="operation flex items-center">
-        <div class="head_picture w-9 h-9 mr-4">
+    <div class="operation flex items-center text-head-text">
+        <div class="head_picture w-9 h-9 mr-4 flex-center">
             <img :src="profile.avatarUrl" alt="" v-if="isLogin" class="wh-full" />
+            <JyIconfont icon="&#xe60f;" v-else class="!text-[38px] !m-0"/>
         </div>
         <div class="mr-4" @click="handleLogin" v-if="!isLogin">点击登录</div>
         <div class="mr-4" v-else>{{ profile.nickname }}</div>
-        <JyIconfont icon="&#xe7cb;" @click="getLogout" title="黑夜模式"></JyIconfont>
-        <JyIconfont icon="&#xe790;" title="主菜单" ></JyIconfont>
+        <JyIconfont
+            :icon="state.isThemeDark ? '&#xe67f;' : '&#xe7cb;'"
+            @click="handleThemeChange"
+        />
+        <JyIconfont icon="&#xe790;" title="主菜单"/>
 
         <QrPopup :unikey="state.qrkey" :qrimg="state.qrimg" v-if="showLoginPopup"></QrPopup>
     </div>
@@ -23,6 +27,7 @@ const { isLogin, profile, showLoginPopup } = storeToRefs(useUserStore());
 const state = reactive({
     qrkey: '',
     qrimg: '',
+    isThemeDark: false,
 });
 
 onMounted(() => {
@@ -64,6 +69,17 @@ const handleLogin = async () => {
     }
     state.qrimg = qrData.data.qrimg;
 };
+
+const handleThemeChange = () => {
+    state.isThemeDark = !state.isThemeDark;
+    if (state.isThemeDark) {
+        localStorage.setItem('theme', 'dark');
+        document.querySelectorAll('html')[0].setAttribute('theme-mode', 'dark');
+    } else {
+        localStorage.removeItem('theme');
+        document.querySelectorAll('html')[0].setAttribute('theme-mode', 'light');
+    }
+};
 </script>
 
 <style lang="scss">
@@ -74,18 +90,9 @@ const handleLogin = async () => {
         cursor: pointer;
     }
 
-    .head_picture {
-        background-color: #ccc;
-        border-radius: 100%;
-
-        img {
-            border-radius: 100%;
-        }
-    }
-
-    .i-icon-hamburger-button {
-        &:hover {
-            color: aquamarine;
+    .head_picture{
+        img{
+            border-radius: 50%;
         }
     }
 
@@ -96,7 +103,7 @@ const handleLogin = async () => {
         z-index: 10;
     }
 
-    .JyIconfont{
+    .JyIconfont {
         font-size: 24px;
         margin-right: 1rem;
         cursor: pointer;
