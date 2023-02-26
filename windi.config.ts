@@ -24,11 +24,11 @@ export default defineConfig({
         extend: {
             colors: {
                 menu: {
-                    bg: 'rgba(var(--theme-menu-bg), 1)',
+                    bg: 'rgba(var(--theme-bg), 1)',
                     'text-2': 'rgba(var(--theme-text-color), 1)',
                 },
                 main: {
-                    bg: 'rgba(var(--theme-main-bg), 1)'
+                    bg: 'rgba(var(--theme-bg), 0.9)'
                 },
                 head: {
                     text: "rgba(var(--theme-text-color), 1)"

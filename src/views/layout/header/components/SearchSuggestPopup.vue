@@ -1,5 +1,5 @@
 <template>
-    <div class="search_suggest_popup w-120 h-90">
+    <div class="search_suggest_popup w-120 h-90 bg-[rgba(var(--theme-base),0.5)]">
         <div class="flex-1 hot_box">
             <div class="hot_title">热门搜索</div>
         </div>
@@ -14,10 +14,10 @@
 <style lang="scss">
 .search_suggest_popup {
     border-radius: 8px;
-    background-color: #fefeff;
     display: flex;
-    padding: 16px 8px;
     font-size: 14px;
+    padding: 16px 8px;
+    color: rgba(var(--theme-text-color),1);
 
     .hot_box {
         border-right: 1px solid #ccc;

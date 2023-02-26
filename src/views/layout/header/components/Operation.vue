@@ -10,14 +10,17 @@
             :icon="state.isThemeDark ? '&#xe67f;' : '&#xe7cb;'"
             @click="handleThemeChange"
         />
-        <JyIconfont icon="&#xe790;" title="主菜单"/>
+        <JyIconfont icon="&#xe790;" title="主菜单" @click="state.isShowOperationMenu = !state.isShowOperationMenu"/>
 
-        <QrPopup :unikey="state.qrkey" :qrimg="state.qrimg" v-if="showLoginPopup"></QrPopup>
+        <QrPopup :unikey="state.qrkey" :qrimg="state.qrimg" v-if="showLoginPopup"/>
+        <OperationMenu v-if="state.isShowOperationMenu"/>
     </div>
 </template>
 
 <script setup lang="ts">
-import { getQrKey, getQrCreate, getLoginStatus, getLogout } from '@/service';
+import QrPopup from "./QrPopup.vue";
+import OperationMenu from "./OperationMenu.vue";
+import { getQrKey, getQrCreate, getLoginStatus } from '@/service';
 import { useUserStore } from '@/stores/user';
 import { storeToRefs } from 'pinia';
 
@@ -28,6 +31,7 @@ const state = reactive({
     qrkey: '',
     qrimg: '',
     isThemeDark: false,
+    isShowOperationMenu:false
 });
 
 onMounted(() => {
@@ -50,10 +54,7 @@ const initLoginStatus = async () => {
     }
 };
 
-/**
- * @description: 点击立即登录
- * @return {*}
- */
+
 const handleLogin = async () => {
     setShowLogin(true);
     const { code, unikey } = await getQrKey();
@@ -70,6 +71,9 @@ const handleLogin = async () => {
     state.qrimg = qrData.data.qrimg;
 };
 
+/**
+ * @description: 切换黑夜和白天模式
+ */
 const handleThemeChange = () => {
     state.isThemeDark = !state.isThemeDark;
     if (state.isThemeDark) {
@@ -100,6 +104,13 @@ const handleThemeChange = () => {
         position: absolute;
         top: 125%;
         left: -104px;
+        z-index: 10;
+    }
+
+    .operation_menu{
+        position: absolute;
+        top: 125%;
+        left: 28px;
         z-index: 10;
     }
 

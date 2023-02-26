@@ -41,6 +41,6 @@ onUnmounted(() => {
 
 <style lang="scss">
 .qr_popup {
-    background-color: #fff;
+    background-color: rgb(255,255,255);
 }
 </style>
