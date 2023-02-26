@@ -1,0 +1,29 @@
+html,
+body,
+#app {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 字体图标 */
+@font-face {
+    font-family: 'iconfont';
+    src: url('./font/iconfont.woff2') format('woff2');
+}
+
+/* 默认字体图标样式 */
+.iconfont {
+    font-family: 'iconfont' !important;
+    font-size: 1rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

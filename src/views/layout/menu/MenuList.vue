@@ -10,7 +10,7 @@
                 :class="item.key === state.currentKey ? 'active' : ''"
                 @click="changeMenu(item)"
             >
-                <IconPark :icon="item.icon" size="20" :theme="item.theme" />
+                <JyIconfont :icon='item.icon'></JyIconfont>
                 <span class="ml-4">{{ item.name }}</span>
             </div>
         </div>
@@ -21,16 +21,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import type { IMenus, IMenu } from '@/models/menu';
-import {
-    Planet as iconPlanet,
-    Music as iconMusic,
-    VideoOne as iconVideoOne,
-    Fm as iconFm,
-    Like as iconLike,
-    Computer as iconComputer,
-    DownloadThree as iconDownloadThree,
-    PlayTwo as iconPlayTwo,
-} from '@icon-park/vue-next';
 
 const router = useRouter();
 
@@ -46,25 +36,25 @@ const menus = computed<IMenus[]>(() => {
                 {
                     name: '推荐',
                     key: 'discover',
-                    icon: iconPlanet,
+                    icon: '&#xe65c;',
                     theme: 'outline',
                 },
                 {
                     name: '音乐馆',
                     key: 'music',
-                    icon: iconMusic,
+                    icon: '&#xe62e;',
                     theme: 'outline',
                 },
                 {
                     name: '视频',
                     key: 'video',
-                    icon: iconVideoOne,
+                    icon: '&#xe812;',
                     theme: 'outline',
                 },
                 {
                     name: '电台',
                     key: 'dj',
-                    icon: iconFm,
+                    icon: '&#xe664;',
                     theme: 'outline',
                 },
             ],
@@ -75,25 +65,25 @@ const menus = computed<IMenus[]>(() => {
                 {
                     name: '我喜欢',
                     key: 'love',
-                    icon: iconLike,
+                    icon: '&#xe6d4;',
                     theme: 'outline',
                 },
                 {
                     name: '本地歌曲',
                     key: 'local',
-                    icon: iconComputer,
+                    icon: '&#xe601;',
                     theme: 'outline',
                 },
                 {
                     name: '下载歌曲',
                     key: 'download',
-                    icon: iconDownloadThree,
+                    icon: '&#xe633;',
                     theme: 'outline',
                 },
                 {
                     name: '最近播放',
                     key: 'recently',
-                    icon: iconPlayTwo,
+                    icon: '&#xe62b;',
                     theme: 'outline',
                 },
             ],

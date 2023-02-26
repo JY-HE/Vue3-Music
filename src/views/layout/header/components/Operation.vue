@@ -5,22 +5,14 @@
         </div>
         <div class="mr-4" @click="handleLogin" v-if="!isLogin">点击登录</div>
         <div class="mr-4" v-else>{{ profile.nickname }}</div>
-        <iconMoon
-            theme="outline"
-            size="24"
-            fill="#333"
-            class="mr-4"
-            title="黑夜模式"
-            @click="getLogout"
-        />
-        <iconHamburgerButton theme="outline" size="24" fill="#333" class="mr-4" title="主菜单" />
+        <JyIconfont icon="&#xe7cb;" @click="getLogout" title="黑夜模式"></JyIconfont>
+        <JyIconfont icon="&#xe790;" title="主菜单" ></JyIconfont>
 
         <QrPopup :unikey="state.qrkey" :qrimg="state.qrimg" v-if="showLoginPopup"></QrPopup>
     </div>
 </template>
 
 <script setup lang="ts">
-import { Moon as iconMoon, HamburgerButton as iconHamburgerButton } from '@icon-park/vue-next';
 import { getQrKey, getQrCreate, getLoginStatus, getLogout } from '@/service';
 import { useUserStore } from '@/stores/user';
 import { storeToRefs } from 'pinia';
@@ -102,6 +94,12 @@ const handleLogin = async () => {
         top: 125%;
         left: -104px;
         z-index: 10;
+    }
+
+    .JyIconfont{
+        font-size: 24px;
+        margin-right: 1rem;
+        cursor: pointer;
     }
 }
 </style>
