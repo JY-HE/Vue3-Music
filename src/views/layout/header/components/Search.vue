@@ -1,6 +1,6 @@
 <template>
     <div class="flex search_box">
-        <iconSearch theme="outline" size="16" fill="#333" />
+        <JyIconfont icon="&#xe8b9;"/>
         <el-input
             v-model="search"
             placeholder="搜索音乐"
@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { Search as iconSearch } from '@icon-park/vue-next';
 const emits = defineEmits(['handleSearchSuggestPopup']);
 const search = ref('');
 </script>
@@ -20,7 +19,7 @@ const search = ref('');
 .search_box {
     position: relative;
 
-    .i-icon-search {
+    .JyIconfont {
         position: absolute;
         z-index: 10;
         top: 50%;
