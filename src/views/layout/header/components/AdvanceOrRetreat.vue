@@ -1,10 +1,9 @@
 <template>
-    <iconLeft theme="outline" size="16" fill="#333" class="mr-2" @click="router.go(-1)" />
-    <iconRight theme="outline" size="16" fill="#333" class="ml-2" @click="router.go(1)" />
+    <JyIconfont icon="&#xea83;" class="mr-2 text-[16px]" @click="router.go(-1)"/>
+    <JyIconfont icon="&#xe650;" class="ml-2 text-[16px]" @click="router.go(1)"/>
 </template>
 
 <script setup lang="ts">
-import { Left as iconLeft, Right as iconRight } from '@icon-park/vue-next';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();

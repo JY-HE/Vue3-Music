@@ -42,19 +42,19 @@ const menus = computed<IMenus[]>(() => {
                 {
                     name: '音乐馆',
                     key: 'music',
-                    icon: '&#xe62e;',
+                    icon: '&#xe89e;',
                     theme: 'outline',
                 },
                 {
                     name: '视频',
                     key: 'video',
-                    icon: '&#xe812;',
+                    icon: '&#xe8f1;',
                     theme: 'outline',
                 },
                 {
                     name: '电台',
                     key: 'dj',
-                    icon: '&#xe664;',
+                    icon: '&#xe8f2;',
                     theme: 'outline',
                 },
             ],
@@ -65,7 +65,7 @@ const menus = computed<IMenus[]>(() => {
                 {
                     name: '我喜欢',
                     key: 'love',
-                    icon: '&#xe6d4;',
+                    icon: '&#xe870;',
                     theme: 'outline',
                 },
                 {
@@ -77,7 +77,7 @@ const menus = computed<IMenus[]>(() => {
                 {
                     name: '下载歌曲',
                     key: 'download',
-                    icon: '&#xe633;',
+                    icon: '&#xe617;',
                     theme: 'outline',
                 },
                 {
@@ -117,6 +117,9 @@ const changeMenu = async (menu: IMenu) => {
     &.active {
         background-image: linear-gradient(to right, rgb(31, 212, 174), rgb(30, 205, 151));
         color: #fff;
+    }
+    .JyIconfont{
+        font-size: 24px;
     }
 }
 </style>
