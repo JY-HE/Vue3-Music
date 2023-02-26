@@ -2,7 +2,7 @@
  * @Author: HeJiaYong
  * @Date: 2023-02-18 13:19:13
  * @LastEditors: HeJiaYong
- * @LastEditTime: 2023-02-19 11:57:14
+ * @LastEditTime: 2023-02-26 11:04:16
  * @FilePath: \Vue3-Music\src\service\http.ts
  * @Description:  http请求配置文件
  * 
@@ -11,7 +11,7 @@
 import axios, { type AxiosRequestConfig } from "axios";
 import type { IHttp } from "@/models/http";
 
-// axios.defaults.baseURL = localStorage.getItem('BASE_URL')?.toString();
+axios.defaults.baseURL = '/api';
 axios.defaults.timeout = 20 * 1000;
 axios.defaults.maxBodyLength = 5 * 1024 * 1024;
 axios.defaults.withCredentials = true

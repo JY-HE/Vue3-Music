@@ -2,7 +2,7 @@
  * @Author: HeJiaYong
  * @Date: 2023-02-19 12:06:23
  * @LastEditors: HeJiaYong
- * @LastEditTime: 2023-02-25 14:09:52
+ * @LastEditTime: 2023-02-26 11:05:14
  * @FilePath: \Vue3-Music\src\service\userService.ts
  * @Description:  处理关于用户层相关api服务
  * 
@@ -15,7 +15,7 @@ import type { IUserProfile, IUserAccount } from '@/models/user';
  * @return {Object} { code: number, unikey: string }
  */
 export const getQrKey = async () => {
-    const { data } = await http.get<{ code: number, data: { code: number, unikey: string } }>('/api/login/qr/key');
+    const { data } = await http.get<{ code: number, data: { code: number, unikey: string } }>('/login/qr/key');
     return data
 }
 
@@ -26,7 +26,7 @@ export const getQrKey = async () => {
  * @return {Object} { code: number, data: { qrurl: string, qrimg: string } }
  */
 export const getQrCreate = async (key: string, qrimg: boolean = true) => {
-    const data = await http.get<{ code: number, data: { qrurl: string, qrimg: string } }>('/api/login/qr/create', { key: key, qrimg: qrimg });
+    const data = await http.get<{ code: number, data: { qrurl: string, qrimg: string } }>('/login/qr/create', { key: key, qrimg: qrimg });
     return data
 }
 
@@ -37,7 +37,7 @@ export const getQrCreate = async (key: string, qrimg: boolean = true) => {
  * @return {Object} { code: number, message: string, cookie: string }
  */
 export const getQrCheck = async (key: string) => {
-    const data = await http.get<{ code: number, message: string, cookie: string }>('/api/login/qr/check', { key: key });
+    const data = await http.get<{ code: number, message: string, cookie: string }>('/login/qr/check', { key: key });
     return data
 }
 
@@ -47,7 +47,7 @@ export const getQrCheck = async (key: string) => {
  */
 export const getLoginStatus = async () => {
     const { data } = await http.get<{ data: { code: number, profile: IUserProfile, account: IUserAccount } }>(
-        '/api/login/status'
+        '/login/status'
     );
     return data
 }
@@ -57,6 +57,6 @@ export const getLoginStatus = async () => {
  * @return {Object} { code: number }
  */
 export const getLogout = async () => {
-    const data = await http.get<{ code: number }>('/api/logout')
+    const data = await http.get<{ code: number }>('/logout')
     return data
 }
