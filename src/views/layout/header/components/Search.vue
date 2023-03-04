@@ -1,18 +1,32 @@
 <template>
     <div class="flex search_box">
-        <JyIconfont icon="&#xe8b9;"/>
-        <el-input
-            v-model="search"
-            placeholder="搜索音乐"
-            @focus="emits('handleSearchSuggestPopup', true)"
-            @blur="emits('handleSearchSuggestPopup', false)"
-        ></el-input>
+        <JyIconfont icon="&#xe8b9;" />
+        <el-input v-model="keyword" placeholder="搜索音乐" @focus="emits('handleSearchSuggestPopup', true)"
+            @blur="emits('handleSearchSuggestPopup', false)" @change="handleSearch"></el-input>
     </div>
 </template>
 
 <script setup lang="ts">
+import { getKeywordSearch } from '@/service';
+import { useSearchStore } from "@/stores/search";
+import { storeToRefs } from 'pinia';
+
+const { setSearchHistoryList } = useSearchStore();
+const { keyword } = storeToRefs(useSearchStore());
 const emits = defineEmits(['handleSearchSuggestPopup']);
-const search = ref('');
+
+/**
+ * @description: 处理搜索关键词
+ * @param {string} keyword
+ */
+const handleSearch = async(keyword: string) => {
+    setSearchHistoryList(keyword)
+    const { code, result } = await getKeywordSearch(keyword)
+    if (code === 200) {
+        console.log("Rd ~ file: SearchSuggestPopup.vue:54 ~ searchSong ~ result:", result)
+    }
+}
+
 </script>
 
 <style lang="scss">
@@ -27,8 +41,10 @@ const search = ref('');
         left: 14px;
     }
 }
+
 .el-input {
     width: 300px;
+
     .el-input__wrapper {
         border: none;
         box-shadow: none;

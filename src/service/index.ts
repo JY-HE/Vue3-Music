@@ -10,3 +10,4 @@
 
 export * from './http'
 export * from './userService'
+export * from './searchService'
