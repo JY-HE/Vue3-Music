@@ -1,6 +1,6 @@
 <template>
-    <div class="qr_popup w-50 h-60 flex-center flex-col">
-        <div>扫码登录</div>
+    <div class="qr_popup w-50 h-60 flex-center flex-col bg-[rgba(var(--theme-base),0.5)]">
+        <div >扫码登录</div>
         <div v-if="!qrimg" v-loading="!qrimg" class="w-35 h-35 my-4"></div>
         <img :src="qrimg" alt="" class="w-35 h-35 my-4" v-else />
         <div class="text-[14px]">使用网易云音乐APP扫码登录</div>
@@ -41,6 +41,6 @@ onUnmounted(() => {
 
 <style lang="scss">
 .qr_popup {
-    background-color: rgb(255,255,255);
+    color: rgba(var(--theme-text-color), 1);
 }
 </style>

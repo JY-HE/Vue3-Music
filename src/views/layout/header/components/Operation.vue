@@ -54,7 +54,9 @@ const initLoginStatus = async () => {
     }
 };
 
-
+/**
+ * @description: 处理登录操作
+ */
 const handleLogin = async () => {
     setShowLogin(true);
     const { code, unikey } = await getQrKey();
