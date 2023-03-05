@@ -1,9 +1,9 @@
 <template>
     <div class="w-screen h-screen flex items-stretch overflow-hidden">
-        <div class="w-56 h-screen flex-shrink-0 bg-menu-bg">
+        <div class="w-56 h-screen flex-shrink-0 menu_root">
             <MenuList />
         </div>
-        <div class="flex-1 flex flex-col bg-main-bg ">
+        <div class="flex-1 flex flex-col main_root">
             <div class="h-14">
                 <Header />
             </div>
@@ -30,3 +30,11 @@ import Footer from '@/views/layout/footer/Footer.vue';
 import PlayList from '@/views/layout/playList/PlayList.vue';
 </script>
 
+<style lang="scss">
+.menu_root {
+    @include menuBackground(1, background);
+}
+.main_root {
+    @include mainBackground(1, background);
+}
+</style>
