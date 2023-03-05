@@ -2,18 +2,15 @@
     <div class="operation flex items-center text-head-text">
         <div class="head_picture w-9 h-9 mr-4 flex-center">
             <img :src="profile.avatarUrl" alt="" v-if="isLogin" class="wh-full" />
-            <JyIconfont icon="&#xe60f;" v-else class="!text-[38px] !m-0"/>
+            <JyIconfont icon="&#xe60f;" v-else class="!text-[38px] !m-0" />
         </div>
         <div class="mr-4" @click="handleLogin" v-if="!isLogin">点击登录</div>
         <div class="mr-4" v-else>{{ profile.nickname }}</div>
-        <JyIconfont
-            :icon="state.isThemeDark ? '&#xe67f;' : '&#xe7cb;'"
-            @click="handleThemeChange"
-        />
-        <JyIconfont icon="&#xe790;" title="主菜单" @click="state.isShowOperationMenu = !state.isShowOperationMenu"/>
+        <JyIconfont :icon="state.isThemeDark ? '&#xe67f;' : '&#xe7cb;'" @click="handleThemeChange" />
+        <JyIconfont icon="&#xe790;" title="主菜单" @click="state.isShowOperationMenu = !state.isShowOperationMenu" />
 
-        <QrPopup :unikey="state.qrkey" :qrimg="state.qrimg" v-if="showLoginPopup"/>
-        <OperationMenu v-if="state.isShowOperationMenu"/>
+        <QrPopup :unikey="state.qrkey" :qrimg="state.qrimg" v-if="state.showLoginPopupFlag && showLoginPopup" />
+        <OperationMenu v-if="state.isShowOperationMenu" />
     </div>
 </template>
 
@@ -31,7 +28,8 @@ const state = reactive({
     qrkey: '',
     qrimg: '',
     isThemeDark: false,
-    isShowOperationMenu:false
+    isShowOperationMenu: false,
+    showLoginPopupFlag:false
 });
 
 onMounted(() => {
@@ -58,6 +56,7 @@ const initLoginStatus = async () => {
  * @description: 处理登录操作
  */
 const handleLogin = async () => {
+    state.showLoginPopupFlag = !state.showLoginPopupFlag;
     setShowLogin(true);
     const { code, unikey } = await getQrKey();
     if (code !== 200) {
@@ -91,13 +90,17 @@ const handleThemeChange = () => {
 <style lang="scss">
 .operation {
     position: relative;
+    @include fontStyle(5);
+    @include fontColor(1);
+
     div,
-    span {
+    span,
+    .JyIconfont {
         cursor: pointer;
     }
 
-    .head_picture{
-        img{
+    .head_picture {
+        img {
             border-radius: 50%;
         }
     }
@@ -109,7 +112,7 @@ const handleThemeChange = () => {
         z-index: 10;
     }
 
-    .operation_menu{
+    .operation_menu {
         position: absolute;
         top: 125%;
         left: 28px;
@@ -117,9 +120,8 @@ const handleThemeChange = () => {
     }
 
     .JyIconfont {
-        font-size: 24px;
+        @include iconSize(2);
         margin-right: 1rem;
-        cursor: pointer;
     }
 }
 </style>

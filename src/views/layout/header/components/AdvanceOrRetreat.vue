@@ -1,6 +1,8 @@
 <template>
-    <JyIconfont icon="&#xea83;" class="mr-2 text-[16px] text-head-text" @click="router.go(-1)"/>
-    <JyIconfont icon="&#xe650;" class="ml-2 text-[16px] text-head-text" @click="router.go(1)"/>
+    <div class="nav_box">
+        <JyIconfont icon="&#xea83;" class=" mr-2" @click="router.go(-1)"/>
+        <JyIconfont icon="&#xe650;" class=" ml-2" @click="router.go(1)"/>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -10,8 +12,12 @@ const router = useRouter();
 </script>
 
 <style lang="scss">
-.i-icon-left,
-.i-icon-right {
-    cursor: pointer;
+.nav_box{
+    .JyIconfont{
+        @include iconSize(4);
+        cursor: pointer;
+        @include fontColor(1)
+    }
 }
+
 </style>

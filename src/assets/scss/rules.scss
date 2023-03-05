@@ -1,0 +1,181 @@
+// [全局] [颜色] 白色;
+@mixin whiteColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(whiteColor, $alpha, $isImportant);
+}
+
+// [全局] [颜色] 黑色;
+@mixin blackColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(blackColor, $alpha, $isImportant);
+}
+
+// [全局] [颜色] 灰色;
+@mixin greyColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(greyColor, $alpha, $isImportant);
+}
+
+// [全局] [颜色] 主题色;
+@mixin themeColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(themeColor, $alpha, $isImportant);
+}
+
+// [全局] [颜色] 常规色;
+@mixin normalColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(normalColor, $alpha, $isImportant);
+}
+
+// [全局] [颜色] 文本激活色;
+@mixin textActiveColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(textActiveColor, $alpha, $isImportant);
+}
+
+// [全局] [颜色] 图标/提醒色;
+@mixin iconColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(iconColor, $alpha, $isImportant);
+}
+
+// [全局] [颜色] 标签/提醒色;
+@mixin labelColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(labelColor, $alpha, $isImportant);
+}
+
+// [全局] [颜色] 左侧菜单栏背景色;
+@mixin menuBackground($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(menuBackground, $alpha, $isImportant);
+}
+
+// [全局] [颜色] 右侧内容区背景色;
+@mixin mainBackground($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(mainBackground, $alpha, $isImportant);
+}
+
+// [全局] [颜色] 左侧菜单栏鼠标划入背景色;
+@mixin menuHoverBackground($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(menuHoverBackground, $alpha, $isImportant);
+}
+
+// [全局] [颜色] 获取颜色函数
+@function colorValue($name: 'baseColor', $alpha: 1, $isImportant: false) {
+    @if $isImportant==true {
+        @return rgba(var(--#{$name}), $alpha) + ' '+'!' + important;
+    } @else {
+        @return rgba(var(--#{$name}), $alpha);
+    }
+}
+
+// [全局] 滚动条样式
+@mixin scrollbarStyle {
+    overflow: hidden overlay;
+
+    &::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width: 4px;
+        /*高宽分别对应横竖滚动条的尺寸*/
+        height: 100%;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        /*滚动条里面小方块*/
+        @include greyColor(var(--scrollbarAlpha), background-color);
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        /*滚动条里面轨道*/
+        display: none;
+    }
+}
+
+// [全局] 双向滚动条样式
+@mixin scrollbarXYStyle {
+    overflow: overlay auto;
+    &::-webkit-scrollbar {
+        @include whrem(4);
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        @include greyColor(var(--scrollbarAlpha), background-color);
+    }
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+    &::-webkit-scrollbar-track {
+        /*滚动条里面轨道*/
+        display: none;
+    }
+}
+
+// [全局] 字体样式
+@mixin fontStyle($level: 5) {
+    $fontStyleList: (
+        (22px, 24px, bolder),
+        (16px, 24px, bolder),
+        (16px, 24px, normal),
+        (14px, 22px, bolder),
+        (14px, 22px, normal)
+    );
+    $fontStyle: nth(
+        $list: $fontStyleList,
+        $n: $level,
+    );
+    font-size: nth($list: $fontStyle, $n: 1);
+    line-height: nth($list: $fontStyle, $n: 2);
+    min-height: nth($list: $fontStyle, $n: 2);
+    font-weight: nth($list: $fontStyle, $n: 3);
+    font-family: '微软雅黑';
+}
+
+// [全局] 字体颜色
+/*
+* T1-文本色
+* 用途：用于左侧导航一级标题、各内容面板标题、列表内字段名称标题、字段内容部分文字、输入框输入文字
+
+* T2-文本色
+* 用途：用于左侧导航二级标题
+
+* T3-文本色
+* 用途：用于右侧内容区的部分字段
+*/
+@mixin fontColor($no: 3, $alpha: 1, $isImportant: false) {
+    $colorName: textColor_ + $no;
+    color: colorValue($colorName, $alpha, $isImportant);
+}
+
+// [全局] 字体图标大小
+/*
+* @param {Number} $no 1 表示 [22px] 大小的图标
+* @param {Number} $no 2 表示 [20px] 大小的图标
+* @param {Number} $no 3 表示 [18px] 大小的图标
+* @param {Number} $no 4 表示 [16px] 大小的图标
+*/
+@mixin iconSize($no: 1) {
+    @if $no==1 {
+        font-size: 22px;
+    } @else if $no==2 {
+        font-size: 20px;
+    } @else if $no==3 {
+        font-size: 18px;
+    } @else {
+        font-size: 16px;
+    }
+}
+
+// 单行文本溢出
+@mixin textHidden() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-overflow: -o-ellipsis-lastline;
+    white-space: nowrap;
+}
+
+// 多行文本溢出省略号
+@mixin multilineTextHidden($row: 3) {
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $row;
+    -webkit-box-orient: vertical;
+    white-space: pre-wrap;
+    word-break: break-all;
+}

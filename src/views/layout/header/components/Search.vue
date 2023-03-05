@@ -1,7 +1,7 @@
 <template>
     <div class="flex search_box">
         <JyIconfont icon="&#xe8b9;" />
-        <el-input v-model="keyword" placeholder="搜索音乐" @focus="emits('handleSearchSuggestPopup', true)"
+        <el-input v-model.trim="keyword" placeholder="搜索音乐" @focus="emits('handleSearchSuggestPopup', true)"
             @blur="emits('handleSearchSuggestPopup', false)" @change="handleSearch"></el-input>
     </div>
 </template>
@@ -51,8 +51,9 @@ const handleSearch = async(keyword: string) => {
         border-radius: 8px;
         background-color: #e4e1e1;
         padding: 0;
-
+        
         .el-input__inner {
+            @include blackColor(1,color);
             padding-left: 40px;
         }
 

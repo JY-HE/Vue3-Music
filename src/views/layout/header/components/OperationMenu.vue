@@ -1,6 +1,6 @@
 <template>
-    <div class="operation_menu w-40 h-50 bg-[rgba(var(--theme-base),0.5)]">
-        <div class="menu_icon" @click="handleLogout">退出登录</div>
+    <div class="operation_menu w-40 h-50">
+        <div class="menu_item" @click="handleLogout">退出登录</div>
     </div>
 </template>
 
@@ -29,16 +29,16 @@ const handleLogout = async () => {
     padding: 16px;
     display: flex;
     justify-content: flex-start;
-    font-size: 14px;
-    color: rgba(var(--theme-text-color), 1);
+    @include themeColor(0.5, background);
 
-    .menu_icon {
+    .menu_item {
         width: 100%;
-        height: 20px;
-        line-height: 20px;
+        @include fontStyle(3);
+        @include fontColor(2);
+        @include textHidden;
 
         &:hover {
-            color: rgb(30, 205, 151);
+            @include normalColor(1, color)
         }
     }
 }

@@ -1,3 +1,68 @@
+/* 全局样式配置 */
+@charset "utf-8";
+
+/* 白色主题 */
+:root {
+    /* 基础白色 -> rgb(255,255,255) */
+    --whiteColor: 255, 255, 255;
+    /* 基础黑色 -> rgb(0,0,0) */
+    --blackColor: 0, 0, 0;
+    /* 基础灰色 rgb(128, 128, 128)*/
+    --greyColor: 128, 128, 128;
+    /* 主题色 -> rgb(255,255,255) */
+    --themeColor: 255, 255, 255;
+    /* 常规色 -> rgb(0, 200, 140) */
+    --normalColor: 0, 200, 140;
+    /* 图标/提醒色 -> rgb(255, 77, 77) */
+    --iconColor: 255, 77, 77;
+    /* 标签/提醒色 -> rgb(255, 153, 0) */
+    --labelColor: 255, 153, 0;
+
+    /* T1-文本色 -> rgb(116, 130, 159) */
+    --textColor_1: 116, 130, 159;
+    /* T2-文本色 -> rgb(22, 22, 22) */
+    --textColor_2: 22, 22, 22;
+    /* T3-文本色 -> rgb(0, 0, 0) */
+    --textColor_3: 0, 0, 0;
+
+    /* 文本激活颜色 -> rgb(255,255,255) */
+    --textActiveColor: 255, 255, 255;
+
+    /* 左侧菜单栏背景色 rgb(241, 241, 241) */
+    --menuBackground: 241, 241, 241;
+    /* 右侧内容区背景色 rgb(249, 249, 249) */
+    --mainBackground: 249, 249, 249;
+    /* 列表鼠标划入背景色 rgb(222, 222, 222) */
+    --menuHoverBackground: 222, 222, 222;
+    /* 滚动条背景色透明度 */
+    --scrollbarAlpha: 0.26;
+}
+
+/* 黑色主题 */
+html[theme-mode='dark'] {
+    /* 主题色 -> rgb(0,0,0) */
+    --themeColor: 0, 0, 0;
+
+    /* T1-文本色 -> rgb(116, 130, 159) */
+    --textColor_1: 116, 130, 159;
+    /* T2-文本色 -> rgb(185, 198, 224) */
+    --textColor_2: 185, 198, 224;
+    /* T3-文本色 -> rgb(255, 255, 255) */
+    --textColor_3: 255, 255, 255;
+
+    /* 文本激活颜色 -> rgb(255,255,255) */
+    --textActiveColor: 255, 255, 255;
+
+    /* 左侧菜单栏背景色 rgb(23, 23, 23) */
+    --menuBackground: 23, 23, 23;
+    /* 右侧内容区背景色 rgb(30, 30, 30) */
+    --mainBackground: 30, 30, 30;
+    /* 列表鼠标划入背景色 rgb(44, 44, 44) */
+    --menuHoverBackground: 44, 44, 44;
+    /* 滚动条背景色透明度 */
+    --scrollbarAlpha: 0.46;
+}
+
 html,
 body,
 #app {
@@ -7,11 +72,16 @@ body,
     padding: 0;
     box-sizing: border-box;
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     transition: color, background 0.5s ease;
+}
+
+.el-loading-mask {
+    background: transparent !important;
 }
 
 /* 字体图标 */
@@ -27,38 +97,4 @@ body,
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-/* 正常展示的样式 */
-:root {
-    /* 按钮颜色以及单选多选等主体色 */
-    --theme-color: #416eff;
-    /* 文字颜色 */
-    --theme-text-color: 0, 0, 0;
-    /* 主题背景颜色 */
-    --theme-bg: 246, 246, 246;
-    /* 大部分icon颜色 */
-    --theme-icon: inherit;
-    /* sidebar三角箭头icon */
-    --theme-arrow-icon: 58, 58, 68;
-    /* 下拉和 select 三角箭头icon */
-    --theme-input-arrow-icon: 58, 58, 68;
-    /* input的背景色 */
-    --theme-input-bg: 255, 255, 255;
-    /* 透明度 */
-    --opacity: 0.5;
-    /* 基础色 */
-    --theme-base: 255, 255, 255;
-}
-/* 黑夜模式下展示的样式 */
-html[theme-mode='dark'] {
-    --theme-color: #416eff;
-    --theme-text-color: 255, 255, 255;
-    --theme-bg: 18, 18, 18;
-    --theme-icon: 255, 255, 255;
-    --theme-arrow-icon: 255, 255, 255;
-    --theme-input-arrow-icon: 255, 255, 255;
-    --theme-input-bg: none;
-    --opacity: 0.5;
-    --theme-base: 0, 0, 0;
 }
