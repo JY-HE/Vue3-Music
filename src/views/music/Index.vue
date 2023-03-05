@@ -1,5 +1,5 @@
 <template>
-    <div class="wh-full">
+    <div class="wh-full music_content">
         <JyTitle title="音乐馆" :showMoreButton="false" />
         <JyNav :navList="navList" @click="handleClick" />
         <router-view />
@@ -25,4 +25,8 @@ const handleClick = (navItem: { name: string; path: string }) => {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss">
+.music_content{
+    @include scrollbarStyle;
+}
+</style>
