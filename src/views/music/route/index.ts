@@ -13,6 +13,7 @@ const route = {
             component: () => import("@/views/music/picked/Picked.vue"),
             meta: {
                 menu: 'music',
+                title: '精选',
                 keepAlive: true,
             }
         },
@@ -22,6 +23,7 @@ const route = {
             component: () => import("@/views/music/toplist/TopList.vue"),
             meta: {
                 menu: 'music',
+                title: '排行',
                 keepAlive: true,
             }
         },
