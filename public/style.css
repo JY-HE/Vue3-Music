@@ -25,8 +25,10 @@
     /* T3-文本色 -> rgb(0, 0, 0) */
     --textColor_3: 0, 0, 0;
 
-    /* 文本激活颜色 -> rgb(255,255,255) */
+    /* 文本激活颜色/与主题色相反的颜色 -> rgb(255,255,255) */
     --textActiveColor: 255, 255, 255;
+    /* 与主题色相反的颜色 -> rgb(0,0,0) */
+    --themeOppositeColor: 0, 0, 0;
 
     /* 左侧菜单栏背景色 rgb(241, 241, 241) */
     --menuBackground: 241, 241, 241;
@@ -52,6 +54,8 @@ html[theme-mode='dark'] {
 
     /* 文本激活颜色 -> rgb(255,255,255) */
     --textActiveColor: 255, 255, 255;
+    /* 与主题色相反的颜色 -> rgb(255,255,255) */
+    --themeOppositeColor: 255, 255, 255;
 
     /* 左侧菜单栏背景色 rgb(23, 23, 23) */
     --menuBackground: 23, 23, 23;

@@ -1,5 +1,7 @@
 <template>
-    <div class="w-[155px] h-14">music</div>
+    <div class="wh-full">
+        <JyTitle title="音乐馆" :showMoreButton="false"/>
+    </div>
 </template>
 
 <script setup lang="ts"></script>

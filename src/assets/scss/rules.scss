@@ -18,6 +18,11 @@
     #{$style}: colorValue(themeColor, $alpha, $isImportant);
 }
 
+// [全局] [颜色] 主题色相反颜色;
+@mixin themeOppositeColor($alpha, $style, $isImportant: false) {
+    #{$style}: colorValue(themeOppositeColor, $alpha, $isImportant);
+}
+
 // [全局] [颜色] 常规色;
 @mixin normalColor($alpha, $style, $isImportant: false) {
     #{$style}: colorValue(normalColor, $alpha, $isImportant);
@@ -108,8 +113,8 @@
 // [全局] 字体样式
 @mixin fontStyle($level: 6) {
     $fontStyleList: (
-        (32px, 34px, bolder),
-        (28px, 30px, normal),
+        (32px, 38px, bolder),
+        (28px, 32px, normal),
         (16px, 24px, bolder),
         (16px, 24px, normal),
         (14px, 22px, bolder),
