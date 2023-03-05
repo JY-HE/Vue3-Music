@@ -80,10 +80,6 @@ body,
     transition: color, background 0.5s ease;
 }
 
-.el-loading-mask {
-    background: transparent !important;
-}
-
 /* 字体图标 */
 @font-face {
     font-family: 'iconfont';

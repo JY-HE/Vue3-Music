@@ -106,9 +106,10 @@
 }
 
 // [全局] 字体样式
-@mixin fontStyle($level: 5) {
+@mixin fontStyle($level: 6) {
     $fontStyleList: (
-        (22px, 24px, bolder),
+        (32px, 34px, bolder),
+        (28px, 30px, normal),
         (16px, 24px, bolder),
         (16px, 24px, normal),
         (14px, 22px, bolder),

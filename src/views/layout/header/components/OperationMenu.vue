@@ -33,7 +33,7 @@ const handleLogout = async () => {
 
     .menu_item {
         width: 100%;
-        @include fontStyle(3);
+        @include fontStyle(4);
         @include fontColor(2);
         @include textHidden;
 

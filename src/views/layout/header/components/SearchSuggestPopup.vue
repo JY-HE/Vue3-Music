@@ -72,7 +72,7 @@ const searchSong = async (searchWord: string) => {
     display: flex;
     padding: 16px 8px;
     @include fontColor(3);
-    @include fontStyle(5);
+    @include fontStyle(6);
     @include themeColor(0.5, background);
 
     .hot_box {

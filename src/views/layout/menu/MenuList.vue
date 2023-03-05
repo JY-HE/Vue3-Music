@@ -165,7 +165,7 @@ const changePlaylist = async (id: string) => {
         .first_menu {
             display: flex;
             align-items: center;
-            @include fontStyle(4);
+            @include fontStyle(5);
             @include fontColor(1);
         }
 
@@ -197,7 +197,7 @@ const changePlaylist = async (id: string) => {
 
                 span {
                     width: 100%;
-                    @include fontStyle(3);
+                    @include fontStyle(4);
                     @include fontColor(2);
                     @include textHidden;
                 }

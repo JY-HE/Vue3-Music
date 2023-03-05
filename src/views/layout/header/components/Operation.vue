@@ -90,7 +90,7 @@ const handleThemeChange = () => {
 <style lang="scss">
 .operation {
     position: relative;
-    @include fontStyle(5);
+    @include fontStyle(6);
     @include fontColor(1);
 
     div,

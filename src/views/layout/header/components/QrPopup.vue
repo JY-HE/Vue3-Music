@@ -42,7 +42,7 @@ onUnmounted(() => {
 <style lang="scss">
 .qr_popup {
     @include themeColor(0.5, background);
-    @include fontStyle(3);
+    @include fontStyle(4);
     @include fontColor(2);
 }
 </style>
