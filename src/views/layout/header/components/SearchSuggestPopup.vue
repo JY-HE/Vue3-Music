@@ -38,6 +38,7 @@ import { storeToRefs } from 'pinia';
 import { getNumberFormat } from '@/utils';
 import type { IHotSearchList } from '@/models/search';
 
+const emits = defineEmits(['handleSearchSuggestPopup']);
 const { clearSearchHistoryList, getSearchHistoryList, setKeyword } = useSearchStore();
 const { searchHistoryList } = storeToRefs(useSearchStore());
 const state = reactive({
@@ -50,7 +51,6 @@ onMounted(async () => {
     if (code === 200) {
         state.hotSearchList = data;
     }
-    console.log('Rd ~ file: SearchSuggestPopup.vue:17 ~ onMounted ~ data:', data);
 });
 
 /**
@@ -59,6 +59,7 @@ onMounted(async () => {
  */
 const searchSong = async (searchWord: string) => {
     setKeyword(searchWord);
+    emits('handleSearchSuggestPopup', false);
     const { code, result } = await getKeywordSearch(searchWord);
     if (code === 200) {
         console.log('Rd ~ file: SearchSuggestPopup.vue:54 ~ searchSong ~ result:', result);
@@ -73,7 +74,11 @@ const searchSong = async (searchWord: string) => {
     padding: 16px 8px;
     @include fontColor(3);
     @include fontStyle(6);
-    @include themeColor(0.5, background);
+    @include themeColor(1, background);
+    position: fixed;
+    top: 66px;
+    left: 374px;
+    z-index: 10;
 
     .hot_box {
         overflow: hidden;

@@ -1,14 +1,18 @@
 <template>
     <div class="flex search_box">
         <JyIconfont icon="&#xe8b9;" />
-        <el-input v-model.trim="keyword" placeholder="搜索音乐" @focus="emits('handleSearchSuggestPopup', true)"
-            @blur="emits('handleSearchSuggestPopup', false)" @change="handleSearch"></el-input>
+        <el-input
+            v-model.trim="keyword"
+            placeholder="搜索音乐"
+            @focus="emits('handleSearchSuggestPopup', true)"
+            @change="handleSearch"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
 import { getKeywordSearch } from '@/service';
-import { useSearchStore } from "@/stores/search";
+import { useSearchStore } from '@/stores/search';
 import { storeToRefs } from 'pinia';
 
 const { setSearchHistoryList } = useSearchStore();
@@ -19,14 +23,13 @@ const emits = defineEmits(['handleSearchSuggestPopup']);
  * @description: 处理搜索关键词
  * @param {string} keyword
  */
-const handleSearch = async(keyword: string) => {
-    setSearchHistoryList(keyword)
-    const { code, result } = await getKeywordSearch(keyword)
+const handleSearch = async (keyword: string) => {
+    setSearchHistoryList(keyword);
+    const { code, result } = await getKeywordSearch(keyword);
     if (code === 200) {
-        console.log("Rd ~ file: SearchSuggestPopup.vue:54 ~ searchSong ~ result:", result)
+        console.log('Rd ~ file: SearchSuggestPopup.vue:54 ~ searchSong ~ result:', result);
     }
-}
-
+};
 </script>
 
 <style lang="scss">
@@ -51,9 +54,9 @@ const handleSearch = async(keyword: string) => {
         border-radius: 8px;
         background-color: #e4e1e1;
         padding: 0;
-        
+
         .el-input__inner {
-            @include blackColor(1,color);
+            @include blackColor(1, color);
             padding-left: 40px;
         }
 
