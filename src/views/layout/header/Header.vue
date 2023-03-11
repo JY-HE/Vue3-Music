@@ -31,7 +31,7 @@ const isShowSearchPopup = ref<boolean>(false);
 const searchRef = ref<HTMLElement | null>(null);
 const searchSuggestPopupRef = ref<HTMLElement | null>(null);
 
-onMounted(async () => {
+onMounted(() => {
     document.addEventListener('click', handlePopupShow);
 });
 onUnmounted(() => {
@@ -44,9 +44,10 @@ onUnmounted(() => {
  */
 const handlePopupShow = (event: MouseEvent) => {
     if (searchRef.value && searchSuggestPopupRef.value) {
+        const target = event.target as HTMLElement;
         isShowSearchPopup.value =
-            searchRef.value.contains(event.target) ||
-            searchSuggestPopupRef.value.contains(event.target);
+            searchRef.value.contains(target) ||
+            searchSuggestPopupRef.value.contains(target);
     }
 };
 </script>
