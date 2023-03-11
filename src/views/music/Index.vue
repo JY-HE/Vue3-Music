@@ -28,5 +28,9 @@ const handleClick = (navItem: { name: string; path: string }) => {
 <style lang="scss">
 .music_content{
     @include scrollbarStyle;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 </style>
