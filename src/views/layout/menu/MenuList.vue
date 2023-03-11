@@ -1,35 +1,49 @@
 <template>
-    <div class="w-full h-full p-4 menu_list">
+    <div class="wh-full menu_list">
         <el-scrollbar>
-            <div v-for="menu in menus" :key="menu.name" class="menu_box">
-                <div class="h-9 first_menu">{{ menu.name }}</div>
-                <div class="sec_menu">
-                    <div
-                        v-for="item in menu.menus"
-                        :key="item.name"
-                        class="h-9 pl-4 menu_item"
-                        :class="item.key === state.currentKey ? 'active' : ''"
-                        @click="changeMenu(item)"
-                    >
-                        <JyIconfont :icon="item.icon" />
-                        <span class="ml-4">{{ item.name }}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="menu_box">
-                <div class="h-9 first_menu">创建的歌单</div>
-                <div class="h-47 sec_menu">
-                    <div
-                        v-for="item in state.userPlaylist"
-                        :key="item.id"
-                        class="h-9 pl-4 menu_item"
-                        :class="item.id === state.playlistId ? 'active' : ''"
-                        @click="changePlaylist(item.id)"
-                    >
-                        <span class="pr-2">{{ item.name }}</span>
-                    </div>
-                </div>
-            </div>
+            <el-row class="jy-el-row">
+                <el-col :span="24">
+                    <el-menu default-active="0-0" :default-openeds="['3']">
+                        <el-menu-item-group
+                            :title="menu.name"
+                            v-for="(menu, index) in menus"
+                            :key="menu.name"
+                        >
+                            <el-menu-item
+                                :index="`${index}-${ind}`"
+                                v-for="(item, ind) in menu.menus"
+                                :key="item.name"
+                                @click="changeMenu(item)"
+                            >
+                                <JyIconfont :icon="item.icon" />
+                                <span> {{ item.name }}</span>
+                            </el-menu-item>
+                        </el-menu-item-group>
+                        <el-sub-menu index="3">
+                            <template #title>创建的歌单</template>
+                            <el-menu-item
+                                :index="`3-${ind}`"
+                                v-for="(item, ind) in state.userPlaylist"
+                                :key="item.id"
+                                @click="changePlaylist(item.id)"
+                            >
+                                <span> {{ item.name }}</span>
+                            </el-menu-item>
+                        </el-sub-menu>
+                        <el-sub-menu index="4">
+                            <template #title>收藏的歌单</template>
+                            <el-menu-item
+                                :index="`4-${ind}`"
+                                v-for="(item, ind) in state.userPlaylist"
+                                :key="item.id"
+                                @click="changePlaylist(item.id)"
+                            >
+                                <span> {{ item.name }}</span>
+                            </el-menu-item>
+                        </el-sub-menu>
+                    </el-menu>
+                </el-col>
+            </el-row>
         </el-scrollbar>
     </div>
 </template>
@@ -126,7 +140,7 @@ watch(
 );
 
 /**
- * @description: 切换左侧菜单栏
+ * @description: 处理在线音乐和我的音乐切换
  * @param {IMenu} menu
  */
 const changeMenu = async (menu: IMenu) => {
@@ -140,8 +154,13 @@ const changeMenu = async (menu: IMenu) => {
  * @return {*}
  */
 const handleUserPlayList = async () => {
+    console.log(
+        'Rd ~ file: MenuList.vue:147 ~ handleUserPlayList ~ profile.value.userId:',
+        profile.value.userId
+    );
     if (profile.value.userId) {
         const { code, playlist } = await getUserPlaylist(profile.value.userId);
+        console.log('Rd ~ file: MenuList.vue:163 ~ handleUserPlayList ~ code:', code);
         if (code === 200) {
             state.userPlaylist = playlist;
         }
@@ -149,7 +168,7 @@ const handleUserPlayList = async () => {
 };
 
 /**
- * @description: 切换左侧菜单栏
+ * @description: 处理创建的歌单切换
  * @param {IMenu} menu
  */
 const changePlaylist = async (id: string) => {
@@ -160,43 +179,66 @@ const changePlaylist = async (id: string) => {
 
 <style lang="scss">
 .menu_list {
-    .menu_box {
-        margin-bottom: 16px;
-        .first_menu {
-            display: flex;
-            align-items: center;
-            @include fontStyle(5);
-            @include fontColor(1);
-        }
+    .el-scrollbar {
+        @include scrollbarStyle;
+        width: 100%;
+        height: 100%;
+        padding: 16px;
+    }
 
-        .sec_menu {
-            @include scrollbarStyle;
-
-            .menu_item {
+    .jy-el-row {
+        .el-menu {
+            border: none;
+            background-color: transparent;
+            .el-menu-item-group {
+                .el-menu-item-group__title {
+                    padding: 0;
+                    @include fontStyle(5);
+                    @include fontColor(1);
+                }
+            }
+            .el-sub-menu {
+                .el-sub-menu__title {
+                    height: 22px;
+                    padding: 0;
+                    @include fontStyle(5);
+                    @include fontColor(1);
+                    &:hover {
+                        background: transparent;
+                    }
+                }
+                .el-menu,.el-menu--inline {
+                    height: 266px;
+                    @include scrollbarStyle;
+                    .el-menu-item {
+                        padding: 0 0 0 6px;
+                    }
+                }
+            }
+            .el-menu-item {
                 display: flex;
                 align-items: center;
-                cursor: pointer;
                 border-radius: 4px;
-
-                .JyIconfont {
-                    @include iconSize(2);
-                    @include fontColor(2);
-                }
-
+                height: 48px;
+                margin: 4px 0;
                 &:hover {
-                    @include menuHoverBackground(1, background);
+                    @include normalColor(0.1, background);
                 }
-
-                &.active {
+                &.is-active {
                     @include normalColor(1, background);
                     span,
                     .JyIconfont {
                         @include textActiveColor(1, color);
                     }
                 }
-
+                .JyIconfont {
+                    @include iconSize(2);
+                    @include fontColor(2);
+                    line-height: 24px;
+                }
                 span {
                     width: 100%;
+                    margin-left: 10px;
                     @include fontStyle(4);
                     @include fontColor(2);
                     @include textHidden;
